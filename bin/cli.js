@@ -67,28 +67,10 @@ async function main() {
     throw new Error(`--raw-schema requires --version flag`);
   }
 
-<<<<<<< HEAD
-  // 1. input
-  let spec = undefined;
-  try {
-    spec = await loadSpec(pathToSpec, {
-      auth: cli.flags.auth,
-      log: output !== "STDOUT",
-    });
-  } catch (err) {
-    process.exitCode = 1; // needed for async functions
-    throw new Error(red(`❌ ${err}`));
-  }
-
-  // 2. generate schema (the main part!)
-  const result = openapiTS(spec, {
-    auth: cli.flags.auth,
-    additionalProperties: cli.flags.additionalProperties,
-=======
   const result = await openapiTS(pathToSpec, {
     auth: cli.flags.auth,
+    additionalProperties: cli.flags.additionalProperties,
     silent: output === "STDOUT",
->>>>>>> 3ea8d8f (Absorb schema loading/parsing into Node API)
     immutableTypes: cli.flags.immutableTypes,
     prettierConfig: cli.flags.prettierConfig,
     rawSchema: cli.flags.rawSchema,

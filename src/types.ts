@@ -1,4 +1,4 @@
-import { URL } from "url";
+import type { URL } from "url";
 
 export interface OpenAPI2 {
   swagger: string; // required
@@ -139,8 +139,6 @@ export interface GlobalContext {
   auth?: string;
   formatter?: SchemaFormatter;
   immutableTypes: boolean;
-  /** (optional) Should logging be suppressed? (necessary for STDOUT) */
-  silent?: boolean;
   namespace?: string;
   rawSchema: boolean;
   version: number;

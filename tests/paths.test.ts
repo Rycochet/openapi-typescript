@@ -47,7 +47,7 @@ describe("transformPathsObj", () => {
                 schema: {
                   type: "object",
                   properties: {
-                    results: { type: "array", items: { $ref: "#/components/schemas/SearchResult" } },
+                    results: { type: "array", items: { $ref: 'components["schemas"]["SearchResult"]' } },
                     total: { type: "integer" },
                   },
                   additionalProperties: false,
@@ -59,7 +59,7 @@ describe("transformPathsObj", () => {
           404: {
             content: {
               "application/json": {
-                schema: { $ref: "#/components/schemas/ErrorResponse" },
+                schema: { $ref: 'components["schemas"]["ErrorResponse"]' },
               },
             },
           },
@@ -275,7 +275,7 @@ describe("transformPathsObj", () => {
       },
       delete: {
         operationId: "testsDelete",
-        requestBody: { $ref: "#/components/schemas/Pet" },
+        requestBody: { $ref: 'components["schemas"]["Pet"]' },
       },
     },
   };
@@ -343,8 +343,11 @@ describe("transformPathsObj", () => {
           {
             "/some/path": {
               get: {
-                parameters: [{ $ref: "#/components/parameters/param1" }, { $ref: "#/components/parameters/param2" }],
-                responses: { 400: { $ref: "#/components/responses/400BadRequest" } },
+                parameters: [
+                  { $ref: 'components["parameters"]["param1"]' },
+                  { $ref: 'components["parameters"]["param2"]' },
+                ],
+                responses: { 400: { $ref: 'components["responses"]["400BadRequest"]' } },
               },
             },
           },
